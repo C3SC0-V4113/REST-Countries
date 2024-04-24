@@ -1,15 +1,28 @@
+import { useLoaderData } from "react-router-dom";
+import { CountryCard } from "./CountryCard";
 import { FormHome } from "./FormHome";
-import { useHome } from "./useHome";
+import { Country } from "../../contracts/types/TCountry";
+
+type CountriesLoader = {
+  countries: Country[];
+};
 
 export const Home = () => {
-  const { countries } = useHome();
+  const { countries } = useLoaderData() as CountriesLoader;
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-8">
       <FormHome />
-      <div className="grid grid-cols-1">
+      <div className="grid grid-cols-1 gap-8">
         {countries?.map((country, index) => (
-          <div key={index}>{country.capital}</div>
+          <CountryCard
+            key={index}
+            capital={country.capital}
+            image={country.flags.png}
+            name={country.name.official}
+            population={country.population}
+            region={country.region}
+          />
         ))}
       </div>
     </div>
