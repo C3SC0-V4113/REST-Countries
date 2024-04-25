@@ -5,14 +5,18 @@ import { Country } from "../../contracts/types/TCountry";
 
 type CountriesLoader = {
   countries: Country[];
+  params: {
+    country?: string;
+    continent?: string;
+  };
 };
 
 export const Home = () => {
-  const { countries } = useLoaderData() as CountriesLoader;
+  const { countries, params } = useLoaderData() as CountriesLoader;
 
   return (
     <div className="flex flex-col gap-8">
-      <FormHome />
+      <FormHome params={params} />
       <div className="grid grid-cols-1 gap-8">
         {countries?.map((country, index) => (
           <CountryCard
