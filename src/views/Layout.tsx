@@ -30,7 +30,7 @@ export const Layout = () => {
           </span>
         </Button>
       </div>
-      <div className="p-4 bg-background text-foreground">
+      <div className="p-4 lg:p-10 bg-background text-foreground">
         <Outlet />
       </div>
     </>

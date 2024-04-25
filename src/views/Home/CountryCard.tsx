@@ -14,7 +14,7 @@ export const CountryCard = ({
   region,
 }: Props) => {
   return (
-    <div className="flex flex-col rounded shadow shadow-background bg-primary text-primary-foreground">
+    <div className="flex flex-col col-span-1 rounded shadow shadow-background bg-primary text-primary-foreground">
       <img src={image} className="w-full rounded-t" alt={name} />
       <div className="flex flex-col p-8">
         <h2 className="mb-4 font-bold">{name}</h2>
