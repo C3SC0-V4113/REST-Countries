@@ -1,5 +1,5 @@
-import { Home } from "@/views/Home";
-import { loaderHome } from "@/views/Home/loaderHome";
+import { Detail, loaderDetail } from "@/views/Detail";
+import { Home, loaderHome } from "@/views/Home";
 import { Layout } from "@/views/Layout";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -12,6 +12,11 @@ export const CountriesRouter = createBrowserRouter([
         index: true,
         element: <Home />,
         loader: loaderHome,
+      },
+      {
+        path: "/:countryName",
+        element: <Detail />,
+        loader: loaderDetail,
       },
     ],
   },
