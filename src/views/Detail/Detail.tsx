@@ -5,7 +5,10 @@ import { IoMdArrowBack } from "react-icons/io";
 import { useEffect, useState } from "react";
 
 export const Detail = () => {
-  const { country } = useLoaderData() as { country: CountryDetail };
+  const { country, borders } = useLoaderData() as {
+    country: CountryDetail;
+    borders: string[];
+  };
   const [nativeName, setNativeName] = useState<string[]>([]);
   const [currenciesArray, setCurrenciesArray] = useState<string[]>([]);
   const [languages, setLanguages] = useState<string[]>([]);
@@ -21,7 +24,9 @@ export const Detail = () => {
   useEffect(() => {
     if (country.currencies) {
       for (const [, value] of Object.entries(country.currencies)) {
-        setCurrenciesArray([...currenciesArray, value.name]);
+        setCurrenciesArray((prev) =>
+          prev.includes(value.name) ? [...prev] : [...prev, value.name]
+        );
       }
     } else {
       setCurrenciesArray(["Unknown"]);
@@ -48,46 +53,60 @@ export const Detail = () => {
           Back
         </div>
       </Button>
-      <div className="grid grid-cols-1 gap-10 mt-10">
+      <div className="grid grid-cols-1 gap-10 mt-10 lg:grid-cols-2">
         <img
-          className="w-full h-auto col-span-1"
+          className="w-full h-auto col-span-1 mx-auto max-w-96 lg:my-auto"
           src={country.flags.svg}
           alt={`img-${country.flags.alt}`}
         />
-        <div className="flex flex-col col-span-1 gap-2">
-          <h1>{country.name.common}</h1>
-          <p>
-            <span className="font-semibold">Native Name: </span>
-            {nativeName.join(", ")}
-          </p>
-          <p>
-            <span className="font-semibold">Population: </span>
-            {new Intl.NumberFormat().format(country.population)}
-          </p>
-          <p>
-            <span className="font-semibold">Region: </span>
-            {country.region}
-          </p>
-          <p>
-            <span className="font-semibold">Subregion: </span>
-            {country.subregion}
-          </p>
-          <p>
-            <span className="font-semibold">Capital: </span>
-            {country.capital}
-          </p>
-          <p className="mt-6">
-            <span className="font-semibold">Top Level Domain: </span>
-            {country.tld}
-          </p>
-          <p>
-            <span className="font-semibold">Currencies: </span>
-            {currenciesArray.join(", ")}
-          </p>
-          <p>
-            <span className="font-semibold">Languages: </span>
-            {languages.join(", ")}
-          </p>
+        <div className="flex flex-col col-span-1 gap-8 md:my-auto">
+          <h1 className="text-xl font-bold">{country.name.common}</h1>
+          <div className="flex flex-col gap-2">
+            <p>
+              <span className="font-semibold">Native Name: </span>
+              {nativeName.join(", ")}
+            </p>
+            <p>
+              <span className="font-semibold">Population: </span>
+              {new Intl.NumberFormat().format(country.population)}
+            </p>
+            <p>
+              <span className="font-semibold">Region: </span>
+              {country.region}
+            </p>
+            <p>
+              <span className="font-semibold">Subregion: </span>
+              {country.subregion}
+            </p>
+            <p>
+              <span className="font-semibold">Capital: </span>
+              {country.capital}
+            </p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p>
+              <span className="font-semibold">Top Level Domain: </span>
+              {country.tld}
+            </p>
+            <p>
+              <span className="font-semibold">Currencies: </span>
+              {currenciesArray.join(", ")}
+            </p>
+            <p>
+              <span className="font-semibold">Languages: </span>
+              {languages.join(", ")}
+            </p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <h2 className="font-bold">Border Countries:</h2>
+            <div className="grid grid-cols-2 gap-4 mt-2 md:grid-cols-3 xl:grid-cols-4">
+              {borders.map((border, index) => (
+                <Button key={index} className="col-span-1">
+                  {border}
+                </Button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
