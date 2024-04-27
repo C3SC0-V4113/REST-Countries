@@ -34,14 +34,14 @@ export const DetailCard = ({ card, borders }: Props) => {
     tld,
   } = card;
   return (
-    <div className="grid grid-cols-1 gap-10 mt-10 lg:grid-cols-2">
+    <div className="grid grid-cols-1 gap-10 mt-10 font-nunito lg:grid-cols-2">
       <img
         className="w-full h-auto col-span-1 mx-auto max-w-96 lg:my-auto"
         src={flags.svg}
         alt={`img-${flags.alt}`}
       />
       <div className="flex flex-col col-span-1 gap-8 md:my-auto">
-        <h1 className="text-xl font-bold">{commonName}</h1>
+        <h1 className="text-xl font-extrabold">{commonName}</h1>
         <div className="flex flex-col gap-2">
           <p>
             <span className="font-semibold">Native Name: </span>
@@ -79,7 +79,7 @@ export const DetailCard = ({ card, borders }: Props) => {
           </p>
         </div>
         <div className="flex flex-col gap-2">
-          <h2 className="font-bold">Border Countries:</h2>
+          <h2 className="font-extrabold">Border Countries:</h2>
           <div className="grid grid-cols-2 gap-4 mt-2 md:grid-cols-3 xl:grid-cols-4">
             {borders.map((border, index) => (
               <Button key={index} className="col-span-1">

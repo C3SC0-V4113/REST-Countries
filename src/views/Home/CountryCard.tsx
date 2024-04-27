@@ -14,10 +14,10 @@ export const CountryCard = ({
   region,
 }: Props) => {
   return (
-    <div className="flex flex-col col-span-1 rounded shadow shadow-background bg-primary text-primary-foreground">
+    <div className="flex flex-col col-span-1 text-sm rounded shadow shadow-background bg-primary text-primary-foreground">
       <img src={image} className="w-full rounded-t" alt={name} />
-      <div className="flex flex-col p-8">
-        <h2 className="mb-4 font-bold">{name}</h2>
+      <div className="flex flex-col p-8 px-6 font-nunito">
+        <h2 className="mb-3 font-extrabold">{name}</h2>
         <p>
           <span className="font-semibold">Population:</span>{" "}
           {new Intl.NumberFormat().format(population)}

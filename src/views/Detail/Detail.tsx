@@ -17,7 +17,7 @@ export const Detail = () => {
     <div className="flex flex-col p-4">
       <Button className="max-w-40">
         <div className="flex gap-4 px-1">
-          <IoMdArrowBack className="my-auto text-lg" />
+          <IoMdArrowBack className="my-auto text-base font-nunito" />
           Back
         </div>
       </Button>

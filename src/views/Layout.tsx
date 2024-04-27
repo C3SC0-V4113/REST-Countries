@@ -15,8 +15,8 @@ export const Layout = () => {
 
   return (
     <>
-      <div className="flex justify-between p-4 align-middle shadow-sm bg-primary md:px-8 text-primary-foreground">
-        <h1 className="my-auto text-base font-bold md:text-lg">
+      <div className="flex justify-between p-4 align-middle shadow-sm font-nunito bg-primary md:px-8 text-primary-foreground">
+        <h1 className="my-auto text-sm font-extrabold md:text-lg">
           Where in the world?
         </h1>
         <Button
@@ -25,7 +25,7 @@ export const Layout = () => {
           className="flex gap-1 text-primary-foreground hover:no-underline"
         >
           <IoMdMoon className="my-auto" />
-          <span className="font-semibold">
+          <span className="text-sm font-semibold">
             {theme === "dark" ? "Dark Mode" : "Light Mode"}
           </span>
         </Button>
