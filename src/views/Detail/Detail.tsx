@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CountryDetail } from "@/contracts/types/TCountry";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { IoMdArrowBack } from "react-icons/io";
 import { useDetailCard } from "./useDetailCard";
 import { DetailCard } from "./DetailCard";
@@ -16,10 +16,12 @@ export const Detail = () => {
   return (
     <div className="flex flex-col p-4">
       <Button className="max-w-40">
-        <div className="flex gap-4 px-1">
-          <IoMdArrowBack className="my-auto text-base font-nunito" />
-          Back
-        </div>
+        <Link to={".."}>
+          <div className="flex gap-4 px-1">
+            <IoMdArrowBack className="my-auto text-base font-nunito" />
+            Back
+          </div>
+        </Link>
       </Button>
       <DetailCard card={card} borders={borders} />
     </div>
