@@ -41,7 +41,14 @@ export const FormHome = ({
         <SelectTrigger className="w-48 font-semibold border-none lg:min-w-60">
           <SelectValue placeholder="Filter by Region" />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent
+          ref={(ref) => {
+            if (!ref) return;
+            ref.ontouchstart = (e) => {
+              e.preventDefault();
+            };
+          }}
+        >
           <SelectItem value="all">All Continents</SelectItem>
           <SelectItem value="Africa">Africa</SelectItem>
           <SelectItem value="Americas">Americas</SelectItem>
