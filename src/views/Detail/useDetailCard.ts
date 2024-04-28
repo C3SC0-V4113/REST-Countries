@@ -6,6 +6,8 @@ export const useDetailCard = (country: CountryDetail) => {
   const [currenciesArray, setCurrenciesArray] = useState<string[]>([]);
   const [languages, setLanguages] = useState<string[]>([]);
 
+  if (country == null) throw new Error("Country not found");
+
   useEffect(() => {
     for (const [, value] of Object.entries(country.name.nativeName)) {
       setNativeName((prev) =>
